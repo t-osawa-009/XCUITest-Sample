@@ -1,7 +1,7 @@
 import Foundation
 import XCTest
 
-final class LoginPage: PageObjectable {
+final class SignupPage: PageObjectable {
     let app: XCUIApplication
     init(app: XCUIApplication) {
         self.app = app
@@ -19,10 +19,15 @@ final class LoginPage: PageObjectable {
         return app.secureTextFields[Ally.passwordTextField].firstMatch
     }
     
+    var nameTextField: XCUIElement {
+        return app.textFields[Ally.nameTextField].firstMatch
+    }
+    
     enum Ally {
-        static let title = "Log in"
-        static let emailTextField = "emailTextField"
-        static let passwordTextField = "passwordTextField"
+        static let title = "Sign up"
+        static let emailTextField = "signupEmailTextField"
+        static let passwordTextField = "signupPasswordTextField"
+        static let nameTextField = "signupNameTextField"
     }
     
     @discardableResult
@@ -41,6 +46,14 @@ final class LoginPage: PageObjectable {
         return self
     }
     
+    @discardableResult
+    func typeName(_ password: String) -> Self {
+        _ = nameTextField.waitForExistence(timeout: 5.0)
+        nameTextField.tap()
+        nameTextField.typeText(password)
+        return self
+    }
+    
     func goToSuccessPage() -> SuccessPage {
         let rightNavBarButton = app.navigationBars.children(matching: .button).firstMatch
         _ = rightNavBarButton.waitForExistence(timeout: 5.0)
@@ -48,3 +61,4 @@ final class LoginPage: PageObjectable {
         return SuccessPage(app: app)
     }
 }
+

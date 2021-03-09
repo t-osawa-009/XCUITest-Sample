@@ -63,7 +63,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log in" id="cQo-yK-OqI">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="eLl-OD-RYf">
+                        <barButtonItem key="rightBarButtonItem" title="done" id="eLl-OD-RYf">
                             <connections>
                                 <segue destination="Wk5-GA-PE6" kind="show" id="9hD-HP-4Fm"/>
                             </connections>

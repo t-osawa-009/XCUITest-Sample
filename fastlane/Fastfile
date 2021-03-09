@@ -1,0 +1,17 @@
+default_platform :ios
+
+platform :ios do
+	lane :run_test do 
+		multi_scan(
+			try_count: 3,
+			fail_build: false,
+			scheme: "XCUITest-Sample",
+			devices: "iPhone 8",
+			configuration: "Debug",
+			clean: true,
+			thread_sanitizer: true,
+			output_types: "html,junit",
+			result_bundle: true
+			)
+	end
+end
